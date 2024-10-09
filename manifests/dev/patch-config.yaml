@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: base-workflow
+  namespace: argo
+spec:
+  arguments:
+    parameters:
+      - name: deployment-env
+        value: develop
+  
+  # If using containers or scripts, uncomment the following lines
+  # templates:
+  #   - name: container-script-template # Replace with your template name
+  #     container: # Or script
+  #       name: workflow-image-name # Replace with your image name, ensure it matches the image name in the kustomization.yaml
+  #       image: workflow-image-name:latest
+              

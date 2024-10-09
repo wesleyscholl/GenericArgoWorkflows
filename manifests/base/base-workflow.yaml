@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: base-workflow # Replace with your workflow name
+  namespace: argo # Replace with your namespace
+spec:
+  templates:
+    - name: main
+      inputs:
+        parameters:
+          - name: deployment-env
+            value: '{{workflow.parameters.deployment-env}}'
+      container:
+        image: alpine:3.7
+        command: [sh, -c]
+        args: ["echo {{inputs.parameters.deployment-env}}"]
+  entrypoint: main
+  arguments:
+    parameters:
+      - name: deployment-env
+        value: 'branch'
+        description: 'Parameter to pass into the workflow'
+  serviceAccountName: argo # Replace with your service account

@@ -1,0 +1,22 @@
+resources:
+  - ./../base
+
+patches:
+  - path: patch-config.yaml # Patch file to be applied
+
+namePrefix: staging- # Prepends the name of the template with 'staging-' in the uat environment
+
+# If using containers or scripts, uncomment the following lines
+# images:
+#   - name: workflow-image-name # Replace with your image name
+#     newName: sipapexdev.azurecr.io/workflow-image-name
+#     newTag: latest-staging
+
+# If using configmaps, uncomment the following lines
+# configMapGenerator:
+#   - name: configmap-name # Replace with your configmap name
+#     literals:
+#       - val=1 # Replace with your key-value pair
+
+generatorOptions:
+  disableNameSuffixHash: true # Disable the hash suffix in the template name
